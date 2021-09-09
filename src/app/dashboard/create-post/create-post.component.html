@@ -1,0 +1,40 @@
+<form [formGroup]="form"
+      fxLayout="column"
+      fxFlex="60"
+      fxFlexOffset="20">
+    <div class="tc f3 mt3 mb2 colorize">{{ (post?.id ? 'post.edit.title' : 'post.create.title') | translate }}</div>
+    <mat-form-field>
+        <mat-label>{{ 'post.title' | translate }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="title">
+        <mat-error
+            *ngIf="titleControl?.errors?.required">{{ 'post.create.errors.required.title' | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>{{ 'post.content' | translate }}</mat-label>
+        <textarea matInput
+                  type="textarea"
+                  rows="3"
+                  cdkTextareaAutosize
+                  formControlName="content">
+        </textarea>
+        <mat-error
+            *ngIf="contentControl?.touched && contentControl?.errors?.required">{{ 'post.create.errors.required.content' | translate }}</mat-error>
+    </mat-form-field>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-around center">
+        <button mat-raised-button
+                class="mt5"
+                color="primary"
+                (click)="cancel()">{{ 'label.cancel' | translate }}
+        </button>
+        <button mat-raised-button
+                class="mt5"
+                color="primary"
+                (click)="submit()">{{ 'post.create.publish' | translate }}
+        </button>
+    </div>
+</form>

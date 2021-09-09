@@ -1,0 +1,32 @@
+<div fxFlex
+     fxLayout="column">
+    <p>{{ 'user.delete.info' | translate }}</p>
+
+    <div class="mt1"
+         fxFlex="100"
+         fxLayout="column"
+         fxLayoutAlign="space-between end">
+        <div fxFlex="100"
+             fxFill
+             fxLayout="row"
+             fxLayoutAlign="space-between start">
+            <button mat-button mat-dialog-close>{{ 'label.cancel' | translate }}</button>
+
+            <button
+                mat-raised-button
+                color="warn"
+                (click)="softDelete()"
+                mat-dialog-close>{{ 'user.delete.soft_delete' | translate }}
+            </button>
+        </div>
+
+        <div class="mt2">
+            <button
+                mat-raised-button
+                color="warn"
+                (click)="hardDelete()"
+                mat-dialog-close>{{ 'user.delete.hard_delete' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

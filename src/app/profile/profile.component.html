@@ -1,0 +1,51 @@
+<form class="mt5"
+      fxLayout="column"
+      *ngIf="profile$ | async as profile">
+    <div>
+        <mat-icon
+            color="primary"
+            fxFlexOffset="20"
+            class="mr2"
+            aria-hidden="false"
+            fxLayoutAlign="end start">account_circle
+        </mat-icon>
+        <i class="mat-subheading-2 colorize">{{ profile.username }}</i>
+    </div>
+
+    <div class="mt2">
+        <mat-icon
+            color="primary"
+            class="mr2"
+            aria-hidden="false"
+            fxFlexOffset="20"
+            fxLayoutAlign="end start">email
+        </mat-icon>
+        <i class="mat-subheading-2 colorize">{{ profile.email }}</i>
+    </div>
+
+    <div class="mt2">
+        <mat-icon
+            color="primary"
+            class="mr2"
+            aria-hidden="false"
+            fxFlexOffset="20"
+            fxLayoutAlign="end start">schedule
+        </mat-icon>
+        <i class="mat-subheading-2 colorize">{{ profile.createdAt | date: 'le dd/MM/YYYY, à  HH:mm' }}</i>
+    </div>
+
+    <div class="mt5"
+         fxFlex
+         fxLayout="row"
+         fxLayoutAlign="center center">
+        <button
+            mat-raised-button
+            class="mt5"
+            color="warn"
+            type="button"
+            (click)="deleteAccount()">
+            <mat-icon aria-hidden="false">clear</mat-icon>
+            {{ 'user.delete.dialog_open' | translate }}
+        </button>
+    </div>
+</form>

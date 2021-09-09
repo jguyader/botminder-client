@@ -1,0 +1,75 @@
+{
+    "app_name": "Botminder",
+    "label": {
+        "continue": "Continuer",
+        "cancel": "Annuler",
+        "delete": "Supprimer",
+        "edit": "Modifier",
+        "like": "Like",
+        "timeline": "Voir posts récents",
+        "unknown": "Inconnu",
+        "dark_theme": "Dark theme"
+    },
+    "user": {
+        "profile": {
+            "menu": "Mon compte"
+        },
+        "delete": {
+            "dialog_open": "Supprimer mon compte",
+            "info": "Souahitez-vous également supprimer toutes les informations et posts relatifs à votre compte ?",
+            "hard_delete": "Supprimer mon compte et les données relatives",
+            "soft_delete": "Supprimer uniquement mon compte"
+        }
+    },
+    "auth": {
+        "signin": {
+            "title": "Se connecter",
+            "success": "Bienvenue {{ username }} !",
+            "button": "Se connecter"
+        },
+        "signup": {
+            "title": "Créer un compte",
+            "email": "Adresse email",
+            "password": "Mot de passe",
+            "username": "Nom d'utilisateur",
+            "logout": "Se déconnecter",
+            "success": "Bienvenue, vous pouvez désormais vous connecter",
+            "errors": {
+                "required": {
+                    "email": "Veuillez saisir un email",
+                    "password": "Veuillez saisir un mot de passe",
+                    "username": "Veuillez saisir un nom d'utilisateur"
+                },
+                "pattern": {
+                    "email": "Veuillez saisir une addresse email valide",
+                    "password": "Veuillez saisir un mot de passe contenant au minimum 8 caractères, une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial"
+                },
+                "passwordConf": "Veuillez saisir un mot de passe identique"
+            }
+        }
+    },
+    "post": {
+        "title": "Titre",
+        "content": "Contenu",
+        "popular_button": "Trier par popularité",
+        "create": {
+            "title": "Création d'un post",
+            "button": "Publier un post",
+            "publish": "Publier",
+            "errors": {
+                "required": {
+                    "title": "Veuillez saisir un titre",
+                    "content": "Veuillez saisir le contenu"
+                }
+            },
+            "success": "Post publié !"
+        },
+        "delete": {
+            "success": "Post supprimé !"
+        },
+        "edit": {
+            "title": "Modification d'un post",
+            "success": "Post mis à jour !"
+        }
+    }
+}

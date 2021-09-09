@@ -1,0 +1,51 @@
+<mat-toolbar fxLayout="row"
+             fxLayoutAlign="space-between"
+             color="primary">
+    <span
+        class="pointer f3 pv3"
+        routerLink="dashboard">{{ 'app_name' | translate }}
+    </span>
+    <mat-slide-toggle
+        class="pv3"
+    [(ngModel)]="darkTheme"
+    (ngModelChange)="onThemeChange()">{{ 'label.dark_theme' | translate }}</mat-slide-toggle>
+    <div class="pv3">
+        <div *ngIf="!authService.isLoggedIn(); else loggedIn">
+            <button
+                mat-button
+                routerLink="signin">{{ 'auth.signin.title' | translate }}
+            </button>
+            <button
+                mat-button
+                routerLink="signup">{{ 'auth.signup.title' | translate }}
+            </button>
+        </div>
+
+        <ng-template #loggedIn>
+            <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #userMenu="matMenu">
+                <button
+                    mat-menu-item
+                    routerLink="dashboard">
+                    <mat-icon aria-hidden="false">feed</mat-icon>
+                    {{ 'label.timeline' | translate }}
+                </button>
+
+                <button
+                    mat-menu-item
+                    routerLink="profile">
+                    <mat-icon aria-hidden="false">person</mat-icon>
+                    {{ 'user.profile.menu' | translate }}
+                </button>
+
+                <button mat-menu-item
+                        (click)="logout()">
+                    <mat-icon aria-hidden="false">logout</mat-icon>
+                    {{ 'auth.signup.logout' | translate }}
+                </button>
+            </mat-menu>
+        </ng-template>
+    </div>
+</mat-toolbar>

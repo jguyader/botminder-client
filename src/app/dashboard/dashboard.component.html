@@ -1,0 +1,72 @@
+<app-create-post *ngIf="showCreatePost"
+                 (hideCreatePost)="hideCreatePost($event)">
+</app-create-post>
+<div *ngIf="!showCreatePost"
+     fxLayout="column"
+     fxLayoutAlign="end end"
+     class="mt3">
+    <button
+        mat-raised-button
+        class="mt5"
+        color="primary"
+        (click)="toggleCreatePost()">{{ 'post.create.button' | translate }}
+    </button>
+</div>
+<mat-checkbox class="mt2"
+              [(ngModel)]="getPopular"
+              (ngModelChange)="getPosts(true)">{{ 'post.popular_button' | translate }}</mat-checkbox>
+
+<div *ngFor="let post of posts$ | async">
+    <mat-card class="mt3">
+        <mat-card-header>
+            <mat-card-title>{{ post.title }}</mat-card-title>
+            <mat-card-subtitle>par <span>{{ post.author?.username || 'label.unknown' | translate }}, </span>
+                <i>{{ post.createdAt | date : 'le dd/MM/YYYY à HH:mm' }}</i></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="pre-l pl3"
+               [innerHTML]="post.content">
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button
+                    (click)="likePost(post)">
+                <mat-icon
+                    [matBadge]="post.likes?.length || 0"
+                    matBadgeColor="accent"
+                    aria-hidden="false"
+                    [matTooltip]="'label.like' | translate">favorite
+                </mat-icon>
+            </button>
+
+            <button
+                *ngIf="post.author?.id | isLoggedInUser"
+                (click)="editPost(post)"
+                mat-button>
+                <mat-icon
+                    aria-hidden="false"
+                    [matTooltip]="'label.edit' | translate">edit
+                </mat-icon>
+            </button>
+
+            <button
+                *ngIf="post.author?.id | isLoggedInUser"
+                (click)="deletePost(post)"
+                mat-button>
+                <mat-icon
+                    aria-hidden="false"
+                    [matTooltip]="'label.delete' | translate">delete
+                </mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+    <app-create-post *ngIf="editedPostId === post.id"
+                     [post]="post"
+                     (hideCreatePost)="hideCreatePost($event)">
+    </app-create-post>
+</div>
+
+<div infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="1000"
+     (scrolled)="onScroll()"></div>

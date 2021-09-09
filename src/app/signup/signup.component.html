@@ -1,0 +1,42 @@
+<form [formGroup]="form"
+      class="mt5"
+      fxFlex="40"
+      fxFlexOffset="30"
+      fxLayoutAlign="space-around center"
+      fxLayout="column">
+    <mat-form-field>
+        <mat-label>{{ 'auth.signup.email' | translate }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="email">
+        <ng-template [ngIf]="emailControl?.touched && emailControl?.invalid">
+            <mat-error *ngIf="emailControl?.errors?.required">{{ 'auth.signup.errors.required.email' | translate }}</mat-error>
+            <mat-error *ngIf="emailControl?.errors?.email">{{ 'auth.signup.errors.pattern.email' | translate }}</mat-error>
+        </ng-template>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>{{ 'auth.signup.password' | translate }}</mat-label>
+        <input matInput
+               type="password"
+               formControlName="password">
+        <ng-template [ngIf]="passwordControl?.touched && passwordControl?.invalid">
+            <mat-error *ngIf="passwordControl?.errors?.required">{{ 'auth.signup.errors.required.password' | translate }}</mat-error>
+            <mat-error *ngIf="passwordControl?.errors?.pattern">{{ 'auth.signup.errors.pattern.password' | translate }}</mat-error>
+        </ng-template>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>{{ 'auth.signup.username' | translate }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="username">
+        <mat-error *ngIf="usernameControl?.errors?.required">{{ 'auth.signup.errors.required.username' | translate }}</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button
+            class="mt5"
+            color="primary"
+            (click)="onSubmit()">{{ 'label.continue' | translate }}
+    </button>
+</form>

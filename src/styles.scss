@@ -1,0 +1,55 @@
+@use '~@angular/material' as mat;
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$angular-primary: mat.define-palette(mat.$teal-palette, 500, 100, 900);
+$angular-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$angular-warn: mat.define-palette(mat.$red-palette);
+
+$angular-dark-theme: mat.define-dark-theme(
+    (
+        color: (
+            primary: $angular-primary,
+            accent: $angular-accent,
+            warn: $angular-warn,
+        ),
+    )
+);
+$dark-primary: mat.define-palette(mat.$pink-palette);
+$dark-accent: mat.define-palette(mat.$blue-gray-palette);
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: auto;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    max-width: 960px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+
+    &.dark {
+        background-color: #303030;
+        @include mat.all-component-colors($angular-dark-theme);
+        mat-checkbox, .colorize, textarea, input  {
+            color: white;
+        }
+
+        .mat-snackbar-container {
+            background-color: #303030;
+            color: white;
+        }
+
+    }
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.viewport {
+    height: 600px;
+}
+

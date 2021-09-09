@@ -1,0 +1,28 @@
+<form [formGroup]="form"
+      class="mt5"
+      fxFlex="40"
+      fxFlexOffset="30"
+      fxLayoutAlign="space-around center"
+      fxLayout="column">
+    <mat-form-field>
+        <mat-label>{{ 'auth.signup.email' | translate }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="email">
+        <mat-error *ngIf="emailControl?.errors?.required">{{ 'auth.signup.errors.required.email' | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>{{ 'auth.signup.password' | translate }}</mat-label>
+        <input matInput
+               type="password"
+               formControlName="password">
+        <mat-error *ngIf="passwordControl?.touched && passwordControl?.errors?.required">{{ 'auth.signup.errors.required.password' | translate }}</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button
+            class="mt5"
+            color="primary"
+            (click)="onSubmit()">{{ 'auth.signin.button' | translate }}
+    </button>
+</form>
